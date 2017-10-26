@@ -32,10 +32,6 @@
             <type>gwt-lib</type>
         </dependency>
         <dependency>
-            <groupId>org.eclipse.che.infrastructure.docker</groupId>
-            <artifactId>docker-client</artifactId>
-        </dependency>
-        <dependency>
             <groupId>org.eclipse.che.plugin</groupId>
             <artifactId>che-plugin-activity-ide</artifactId>
             <type>gwt-lib</type>
@@ -225,24 +221,24 @@
     <build>
         <plugins>
             <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-dependency-plugin</artifactId>
-                <executions>
-                    <execution>
-                        <id>analyze</id>
-                        <configuration>
-                            <skip>true</skip>
-                        </configuration>
-                    </execution>
-                </executions>
+                <groupId>net.ltgt.gwt.maven</groupId>
+                <artifactId>gwt-maven-plugin</artifactId>
+                <extensions>true</extensions>
+                <configuration>
+                    <moduleName>org.eclipse.che.ide.IDE</moduleName>
+                    <moduleShortName>_app</moduleShortName>
+                    <jvmArgs>
+                        <arg>${gwt.compiler.jvmArgs.Xss}</arg>
+                        <arg>${gwt.compiler.jvmArgs.Xmx}</arg>
+                    </jvmArgs>
+                </configuration>
             </plugin>
-            <!-- Source Generator invocation -->
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>exec-maven-plugin</artifactId>
                 <executions>
                     <execution>
-                        <id>extManager-client</id>
+                        <id>generate-ExtensionManager</id>
                         <phase>generate-sources</phase>
                         <goals>
                             <goal>java</goal>
@@ -255,7 +251,7 @@
                         </configuration>
                     </execution>
                     <execution>
-                        <id>IDEInjector-client</id>
+                        <id>generate-IDEInjector</id>
                         <phase>generate-sources</phase>
                         <goals>
                             <goal>java</goal>
@@ -268,7 +264,7 @@
                         </configuration>
                     </execution>
                     <execution>
-                        <id>DtoRegistry-client</id>
+                        <id>generate-DtoRegistry</id>
                         <phase>generate-sources</phase>
                         <goals>
                             <goal>java</goal>
@@ -299,16 +295,22 @@
                 </configuration>
             </plugin>
             <plugin>
-                <groupId>net.ltgt.gwt.maven</groupId>
-                <artifactId>gwt-maven-plugin</artifactId>
-                <extensions>true</extensions>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>buildnumber-maven-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <phase>validate</phase>
+                        <goals>
+                            <goal>create</goal>
+                        </goals>
+                    </execution>
+                </executions>
                 <configuration>
-                    <moduleName>org.eclipse.che.ide.IDE</moduleName>
-                    <moduleShortName>_app</moduleShortName>
-                    <jvmArgs>
-                        <arg>${gwt.compiler.jvmArgs.Xss}</arg>
-                        <arg>${gwt.compiler.jvmArgs.Xmx}</arg>
-                    </jvmArgs>
+                    <timestampFormat>{0, date, yyyy-MM-dd HH:mm:ss}</timestampFormat>
+                    <buildNumberPropertyName>revision</buildNumberPropertyName>
+                    <doCheck>false</doCheck>
+                    <doUpdate>false</doUpdate>
+                    <shortRevisionLength>16</shortRevisionLength>
                 </configuration>
             </plugin>
             <plugin>
@@ -331,21 +333,13 @@
                     </execution>
                 </executions>
             </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-war-plugin</artifactId>
-                <configuration>
-                    <packagingExcludes>%regex[WEB-INF\\lib\\(?!.*j2ee).*.jar]</packagingExcludes>
-                    <attachClasses>true</attachClasses>
-                </configuration>
-            </plugin>
+            <!-- show the generated sources for compiler:compile -->
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>build-helper-maven-plugin</artifactId>
                 <executions>
                     <execution>
                         <id>add-source</id>
-                        <phase>generate-sources</phase>
                         <goals>
                             <goal>add-source</goal>
                         </goals>
@@ -358,23 +352,16 @@
                 </executions>
             </plugin>
             <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>buildnumber-maven-plugin</artifactId>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-dependency-plugin</artifactId>
                 <executions>
                     <execution>
-                        <phase>validate</phase>
-                        <goals>
-                            <goal>create</goal>
-                        </goals>
+                        <id>analyze</id>
+                        <configuration>
+                            <skip>true</skip>
+                        </configuration>
                     </execution>
                 </executions>
-                <configuration>
-                    <timestampFormat>{0, date, yyyy-MM-dd HH:mm:ss}</timestampFormat>
-                    <buildNumberPropertyName>revision</buildNumberPropertyName>
-                    <doCheck>false</doCheck>
-                    <doUpdate>false</doUpdate>
-                    <shortRevisionLength>16</shortRevisionLength>
-                </configuration>
             </plugin>
         </plugins>
     </build>
