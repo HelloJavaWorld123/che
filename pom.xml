@@ -1857,7 +1857,7 @@
                 <artifactId>gwt-maven-plugin</artifactId>
                 <inherited>false</inherited>
                 <configuration>
-                    <projects>assembly-ide-war</projects>
+                    <!--<projects>assembly-ide-war</projects>-->
                     <!-- Include provided dependencies to the CodeServer's classpath.
                      They are: gwt-dev and servlet-api in assembly-ide-war. -->
                     <classpathScope>compile+runtime</classpathScope>

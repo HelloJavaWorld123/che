@@ -21,6 +21,7 @@
     <artifactId>assembly-ide-war</artifactId>
     <packaging>war</packaging>
     <name>Che IDE :: War Packaging</name>
+    <description>Che IDE web-app</description>
     <properties>
         <generated.sources.directory>${project.build.directory}/generated-sources/gen</generated.sources.directory>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

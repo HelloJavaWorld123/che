@@ -21,6 +21,7 @@
     <artifactId>ide-gwt-app</artifactId>
     <packaging>gwt-app</packaging>
     <name>Che IDE :: Compiling GWT Application</name>
+    <description>Che IDE gwt-app</description>
     <properties>
         <generated.sources.directory>${project.build.directory}/generated-sources/gen</generated.sources.directory>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
