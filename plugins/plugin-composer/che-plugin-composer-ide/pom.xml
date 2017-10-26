@@ -115,6 +115,8 @@
                         <configuration>
                             <ignoredUnusedDeclaredDependencies>
                                 <!-- needed for including to GWT source path -->
+                                <ignoredUnusedDeclaredDependency>org.eclipse.che.core:che-core-api-core</ignoredUnusedDeclaredDependency>
+                                <ignoredUnusedDeclaredDependency>org.eclipse.che.core:che-core-api-project-shared</ignoredUnusedDeclaredDependency>
                                 <ignoredUnusedDeclaredDependency>org.eclipse.che.plugin:che-plugin-composer-shared</ignoredUnusedDeclaredDependency>
                                 <ignoredUnusedDeclaredDependency>org.eclipse.che.plugin:che-plugin-php-lang-shared</ignoredUnusedDeclaredDependency>
                             </ignoredUnusedDeclaredDependencies>

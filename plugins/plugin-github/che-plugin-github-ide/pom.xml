@@ -225,6 +225,7 @@
                         <configuration>
                             <ignoredUnusedDeclaredDependencies>
                                 <!-- needed for including to GWT source path -->
+                                <ignoredUnusedDeclaredDependency>org.eclipse.che.core:che-core-api-ssh-shared</ignoredUnusedDeclaredDependency>
                                 <ignoredUnusedDeclaredDependency>org.eclipse.che.plugin:che-plugin-github-shared</ignoredUnusedDeclaredDependency>
                             </ignoredUnusedDeclaredDependencies>
                         </configuration>

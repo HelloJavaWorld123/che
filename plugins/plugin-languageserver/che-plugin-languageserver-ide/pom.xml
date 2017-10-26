@@ -269,7 +269,9 @@
                             <ignoredDependencies>
                                 <ignoredDependency>org.eclipse.xtext:org.eclipse.xtext.xbase.lib.gwt</ignoredDependency>
                                 <!-- needed for including to GWT source path -->
+                                <ignoredUnusedDeclaredDependency>org.eclipse.che.core:che-core-api-core</ignoredUnusedDeclaredDependency>
                                 <ignoredUnusedDeclaredDependency>org.eclipse.che.core:che-core-api-languageserver-shared</ignoredUnusedDeclaredDependency>
+                                <ignoredUnusedDeclaredDependency>org.eclipse.che.core:che-core-api-model</ignoredUnusedDeclaredDependency>
                             </ignoredDependencies>
                         </configuration>
                     </execution>

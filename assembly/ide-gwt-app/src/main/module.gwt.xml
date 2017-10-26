@@ -12,20 +12,6 @@
 
 -->
 <module>
-    <!-- gwt-logger -->
-    <inherits name="org.eclipse.che.ide.logger.slf4j.Logging"/>
-
-    <!-- commons-gwt -->
-    <inherits name="org.eclipse.che.Requirejs"/>
-    <inherits name="org.eclipse.che.api.promises.Promises"/>
-    <inherits name="org.eclipse.che.ide.collections.Collections"/>
-    <inherits name="org.eclipse.che.ide.Util"/>
-    <inherits name="org.eclipse.che.ide.Commons"/>
-    <inherits name="org.eclipse.che.ide.dto.DtoGen"/>
-    <inherits name="org.eclipse.che.ide.runtime.Runtime"/>
-    <inherits name="org.eclipse.che.providers.Providers"/>
-    <inherits name="org.eclipse.che.security.OAuth"/>
-
     <stylesheet src="IDE.css"/>
 
     <entry-point class="org.eclipse.che.ide.client.IDE"/>
@@ -39,6 +25,6 @@
     <set-property name="gwt.logging.developmentModeHandler" value="ENABLED" />
     <set-property name="gwt.logging.consoleHandler" value="ENABLED"/>
 
-    <set-property name="user.agent" value="safari" />
-    <set-property name="mobile.user.agent" value="not_mobile" />
+    <!--<set-property name="user.agent" value="safari" />-->
+    <!--<set-property name="mobile.user.agent" value="not_mobile" />-->
 </module>
